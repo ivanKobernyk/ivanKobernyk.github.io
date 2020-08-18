@@ -14,7 +14,7 @@ body {
     font-family: Roboto, sans-serif;
     box-sizing: border-box;
     margin: 0px;
-    padding: 0px;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -152,6 +152,6 @@ body {
 
 @media (max-width: 600px) {
     .todoInputContainer, .listItem, #todoListContainer {
-        width: 100vw;
+        width: 100%;
     }
 }
