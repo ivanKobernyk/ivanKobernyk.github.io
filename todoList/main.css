@@ -141,6 +141,7 @@ body {
     background-color: rgb(59, 59, 59);
     padding: 10px 20px;
     border-radius: 20px;
+    animation-duration: .1s;
 }
 
 .listItem .todo {

@@ -46,7 +46,7 @@ function render(arr, id = undefined, anim) {
     return arr.map((el) => {
         let animate = anim || 'animate__slideInUp';
         if (el.id >= id) { animate = '' } 
-        let str = `<div class='listItem wow animate__animated ${animate}' id=${el.id}>
+        let str = `<div class='listItem wow animate__faster animate__animated ${animate}' id=${el.id}>
         <div class="wrapper">
         <span>${el.time}</span>
         <span class='delete' key=${key}>&#10006;</span></div>
@@ -117,6 +117,6 @@ function deleteListItem(el) {
 
         deleteItem = document.querySelectorAll('.delete');
         listiner();
-    }, 500);
+    }, 200);
 }
 
