@@ -30,6 +30,8 @@ let btn = document.querySelector('.todoBtn');
 let input = document.querySelector('.todoInput');
 let todoList = document.querySelector('#todoListContainer');
 let alert = document.querySelector('.alert');
+let todo = document.querySelectorAll('.todo');
+
 todoList.innerHTML = (localStorage.getItem(1)) ? render(JSON.parse(localStorage.getItem(1))) : '';
 let arr = (localStorage.getItem(1)) ? JSON.parse(localStorage.getItem(1)) : [];
 let deleteItem = document.querySelectorAll('.delete');
@@ -40,8 +42,8 @@ let clock = new Clock({template : 'h:m:s'});
 listiner();
 
 function setoverflow() {
-    listItem = document.querySelectorAll('.listItem');
-    listItem.forEach(el => {
+    todo = document.querySelectorAll('.todo');
+    todo.forEach(el => {
         if (el.offsetHeight > 399) {
             el.classList.add('large');
         }
