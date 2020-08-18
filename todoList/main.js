@@ -1,3 +1,31 @@
+/* clock */
+class Clock {
+    constructor({ template }) {
+        this.template = template;
+    }
+
+    render() {
+        let date = new Date();
+
+        let hours = date.getHours();
+        if (hours < 10) hours = '0' + hours;
+
+        let mins = date.getMinutes();
+        if (mins < 10) mins = '0' + mins;
+
+        let secs = date.getSeconds();
+        if (secs < 10) secs = '0' + secs;
+
+        let output = this.template
+            .replace('h', hours)
+            .replace('m', mins)
+            .replace('s', secs);
+
+        return output;
+    }
+}
+/* main */
+
 let btn = document.querySelector('.todoBtn');
 let input = document.querySelector('.todoInput');
 let todoList = document.querySelector('#todoListContainer');
@@ -6,6 +34,8 @@ todoList.innerHTML = (localStorage.getItem(1)) ? render(JSON.parse(localStorage.
 let arr = (localStorage.getItem(1)) ? JSON.parse(localStorage.getItem(1)) : [];
 let deleteItem = document.querySelectorAll('.delete');
 let listItem = document.querySelectorAll('.listItem');
+
+let clock = new Clock({template : 'h:m:s'});
 
 listiner();
 
@@ -23,7 +53,7 @@ function addelement() {
     let obj = {
         id: arr.length,
         value: input.value,
-        time: `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
+        time: `${clock.render()}`
     }
 
     console.log(input.value);
