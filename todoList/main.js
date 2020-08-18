@@ -1,6 +1,7 @@
 let btn = document.querySelector('.todoBtn');
 let input = document.querySelector('.todoInput');
 let todoList = document.querySelector('#todoListContainer');
+let alert = document.querySelector('.alert');
 
 todoList.innerHTML = (localStorage.getItem(1)) ? render(JSON.parse(localStorage.getItem(1))) : '';
 let arr = (localStorage.getItem(1)) ? JSON.parse(localStorage.getItem(1)) : [];
@@ -18,6 +19,10 @@ function addelement() {
     if (obj.value != '' && obj.value != '\n') {
         arr.push(obj);
         push();
+    } else if (obj.value === '' || obj.value === '\n'){
+        alert.innerHTML = "Enter something, please!";
+        setTimeout(() => { alert.innerHTML = '' }, 2000);
+        return 0;
     }
     input.value = '';
     todoList.innerHTML = render(JSON.parse(localStorage.getItem(1)));

@@ -32,6 +32,12 @@ body {
     scrollbar-width: none;
 }
 
+.alert {
+    text-align: center;
+    min-height: 40px;
+    padding-top: 20px;
+    color: rgb(117, 48, 48);
+}
 
 .todoInputContainer {
     font-family: Roboto, sans-serif;
@@ -42,7 +48,7 @@ body {
     width: 600px;
     height: 100px;
     background-color: rgb(59, 59, 59);
-    margin: 40px auto 0px;
+    margin: 10px auto 0px;
     border-radius: 20px;
 }
 
@@ -92,6 +98,11 @@ body {
     border-radius: 50%;
     outline: none;
     transition: all 0.5s ease 0s;
+    flex-shrink:0;
+}
+
+.todoBtn:hover {
+    cursor: pointer;
 }
 
 .todoBtn span {
