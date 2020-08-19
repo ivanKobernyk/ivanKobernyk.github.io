@@ -26,15 +26,15 @@ body {
 #root::-webkit-scrollbar {
     width: 12px;
 }
- 
+
 #root::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
- 
+
 #root::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
 .alert {
@@ -103,7 +103,7 @@ body {
     border-radius: 50%;
     outline: none;
     transition: all 0.5s ease 0s;
-    flex-shrink:0;
+    flex-shrink: 0;
 }
 
 .todoBtn:hover {
@@ -157,15 +157,17 @@ body {
 .large::-webkit-scrollbar {
     width: 12px;
 }
- 
+
 .large::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
- 
+
 .large::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
 .listItem .todo {
@@ -177,7 +179,9 @@ body {
     white-space: pre-wrap;
     overflow-wrap: break-word;
     word-wrap: break-word;
+    outline: none;
 }
+
 .delete:hover {
     cursor: pointer;
 }
@@ -189,8 +193,18 @@ body {
 }
 
 
+/* Edit */
+.saved {
+    width: 70px;
+    color: #075cb6;
+    font-size: 12px;
+
+
 @media (max-width: 600px) {
-    .todoInputContainer, .listItem, #todoListContainer {
+
+    .todoInputContainer,
+    .listItem,
+    #todoListContainer {
         width: 100%;
     }
 }
