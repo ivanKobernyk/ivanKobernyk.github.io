@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     let clock = new Clock({ template: 'h:m:s' });
     let value;
-    let message;
+    /* let message; */
 
 
     function blurinput() {
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
         if (obj.value == '' || obj.value == '\n' || obj.value == null || isOkey() == false) {
-            alert.innerHTML = (message)? message: "Enter something, please!";
+            alert.innerHTML = "Enter something, please!";
             input.blur();
             input.value = null;
             setTimeout(() => { alert.innerHTML = '', message = null }, 2000);
@@ -143,10 +143,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     function isOkey() {
         let boolean = true;
         let secbool = false;
-        if (input.value.length < 3) {
-            boolean = false;
-            message = "Must be at least 3 characters long";
-        } else if (true) {
+
+        if (true) {
             let set = new Set(input.value);
             set.forEach((el) => {
 
