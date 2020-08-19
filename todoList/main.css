@@ -198,9 +198,9 @@ body {
     width: 70px;
     color: #075cb6;
     font-size: 12px;
+}
 
-
-@media (max-width: 600px) {
+@media (max-width: 660px) {
 
     .todoInputContainer,
     .listItem,
