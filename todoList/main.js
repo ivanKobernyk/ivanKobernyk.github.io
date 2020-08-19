@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let clock = new Clock({ template: 'h:m:s' });
 
     listiner();
+    addsavelistiner();
 
     function setoverflow() {
         todo = document.querySelectorAll('.todo');
@@ -73,10 +74,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
             push();
         }
 
+
         input.value = null;
         todoList.innerHTML = render(JSON.parse(localStorage.getItem(1)), 'a', 'animate__slideInDown');
         listItem = document.querySelectorAll('.listItem');
         setoverflow();
+
+        clearsavelistiner();
+        addsavelistiner();
 
         listItem.forEach(el => {
             if (el.offsetHeight > 599) {
@@ -173,6 +178,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
             todoList.innerHTML = render(JSON.parse(localStorage.getItem(1)), el.parentNode.parentNode.id);
             setoverflow();
+
+            clearsavelistiner();
+            addsavelistiner()
             deleteItem = document.querySelectorAll('.delete');
             listiner();
         }, 200);
@@ -180,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     /* edit */
     function saveNotes(el) {
         let saved = el.parentNode.querySelector('.saved');
-        if(arr[el.parentNode.id].value == el.innerHTML) return null;
+        if (arr[el.parentNode.id].value == el.innerHTML) return null;
         arr[el.parentNode.id].value = el.innerHTML;
         push();
 
@@ -189,18 +197,37 @@ document.addEventListener("DOMContentLoaded", function (event) {
         setTimeout(() => { saved.innerHTML = '' }, 2000);
     }
 
-    todo.forEach(el => {
-        el.addEventListener('keydown', (event) => {
-            if (event.shiftKey && (event.key == 'Enter')) {
-            }
-            else if (event.key == 'Enter') {
+    function addsavelistiner() {
+        todo = document.querySelectorAll('.todo');
+        todo.forEach(el => {
+            el.addEventListener('keydown', (event) => {
+                if (event.shiftKey && (event.key == 'Enter')) {
+                }
+                else if (event.key == 'Enter') {
+                    saveNotes(el);
+                }
+            });
+            el.addEventListener("blur", (event) => {
                 saveNotes(el);
-            }
+            })
         });
-        el.addEventListener("blur", (event) => {
-            saveNotes(el);
-        })
-    });
+    }
+
+    function clearsavelistiner() {
+        todo = document.querySelectorAll('.todo');
+        todo.forEach(el => {
+            el.removeEventListener('keydown', (event) => {
+                if (event.shiftKey && (event.key == 'Enter')) {
+                }
+                else if (event.key == 'Enter') {
+                    saveNotes(el);
+                }
+            });
+            el.removeEventListener("blur", (event) => {
+                saveNotes(el);
+            })
+        });
+    }
 
 });
 
