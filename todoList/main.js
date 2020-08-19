@@ -41,6 +41,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let listItem = document.querySelectorAll('.listItem');
 
     let clock = new Clock({ template: 'h:m:s' });
+    let value;
+
+
+    function blurinput() {
+        input.addEventListener("blur", () => {
+            value = input.value;
+            if (input.value == '' || input.value == '\n') {
+                input.value = '';
+                input.blur();
+            }
+        })
+    }
+    blurinput();
 
     listiner();
     addsavelistiner();
@@ -58,24 +71,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
     function addelement() {
         let obj = {
             id: arr.length,
-            value: input.value,
+            value: input.value || value,
             time: `${clock.render()}`
         }
 
-        console.log(input.value);
-        if (obj.value == '' || obj.value == '\n') {
+        if (obj.value == '' || obj.value == '\n' || obj.value == null) {
             alert.innerHTML = "Enter something, please!";
+            input.blur();
             input.value = null;
             setTimeout(() => { alert.innerHTML = '' }, 2000);
             return 0;
         }
-        else if (obj.value != '' && obj.value != '\n') {
+        if (obj.value != '' && obj.value != '\n') {
             arr.push(obj);
             push();
         }
 
-
-        input.value = null;
+        input.value = '';
         todoList.innerHTML = render(JSON.parse(localStorage.getItem(1)), 'a', 'animate__slideInDown');
         listItem = document.querySelectorAll('.listItem');
         setoverflow();
@@ -96,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         deleteItem = document.querySelectorAll('.delete');
         listiner();
+        value = null;
     }
 
     function render(arr, id = undefined, anim) {
@@ -103,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         return arr.map((el) => {
             let animate = anim || 'animate__slideInUp';
             if (el.id >= id) { animate = '' }
-            let str = `<div class='listItem wow animate__faster animate__animated ${animate}' id=${el.id}>
+            let str = `<div class='listItem wow animate__faste animate__animated ${animate}' id=${el.id}>
             <div class="wrapper">
                  <span>${el.time}</span>
                  <span class="saved"></span>
@@ -183,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             addsavelistiner()
             deleteItem = document.querySelectorAll('.delete');
             listiner();
-        }, 200);
+        }, 75);
     }
     /* edit */
     function saveNotes(el) {

@@ -1,3 +1,8 @@
+.animate__faste {
+    --animate-duration: 0.15s;
+}
+
+
 * {
     box-sizing: border-box;
     margin: 0px;
@@ -87,6 +92,9 @@ body {
 }
 
 .todoBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     padding: 0px;
     position: relative;
@@ -110,15 +118,11 @@ body {
     cursor: pointer;
 }
 
-.todoBtn span {
-    font-size: 30px;
+.todoBtn div{
+    font-size: 34px;
+    line-height: 34px;
     color: rgb(255, 255, 255);
     box-sizing: border-box;
-    height: 40px;
-    position: absolute;
-    top: 54%;
-    left: 54%;
-    transform: translate(-50%, -50%);
     margin: 0px;
     padding: 0px;
 }
