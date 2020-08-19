@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     let clock = new Clock({ template: 'h:m:s' });
     let value;
+    let message;
 
 
     function blurinput() {
@@ -79,13 +80,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
         if (obj.value == '' || obj.value == '\n' || obj.value == null || isOkey() == false) {
-            alert.innerHTML = "Enter something, please!";
+            alert.innerHTML = (message)? message: "Enter something, please!";
             input.blur();
             input.value = null;
-            setTimeout(() => { alert.innerHTML = '' }, 2000);
+            setTimeout(() => { alert.innerHTML = '', message = null }, 2000);
             return 0;
         }
         if (obj.value != '' && obj.value != '\n' && isOkey()) {
+            arr = (localStorage.getItem(1)) ? JSON.parse(localStorage.getItem(1)) : [];
             arr.push(obj);
             push();
         }
@@ -142,8 +144,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let boolean = true;
         let secbool = false;
         if (input.value.length < 3) {
-            console.log(input.value.length)
             boolean = false;
+            message = "Must be at least 3 characters long";
         } else if (true) {
             let set = new Set(input.value);
             set.forEach((el) => {
