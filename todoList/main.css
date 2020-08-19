@@ -19,7 +19,7 @@ body {
     font-family: Roboto, sans-serif;
     box-sizing: border-box;
     margin: 0px;
-    padding: 0 20px;
+    padding: 0 20px 40px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -164,6 +164,10 @@ body {
 .nonescrol {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.large {
+    scrollbar-width: 12px;
 }
 
 .large::-webkit-scrollbar {

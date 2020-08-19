@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                  <span class="saved"></span>
                      <span class='delete' key=${key}>&#10006;</span>
             </div>
-        <span class="todo" contenteditable="true" onchange="setoverflow()">${el.value}</span>
+        <span class="todo" contenteditable="true" >${el.value}</span>
         </div>`;
             key++;
             return str;
