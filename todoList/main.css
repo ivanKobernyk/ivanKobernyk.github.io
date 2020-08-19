@@ -30,7 +30,7 @@ body {
 
 #root::-webkit-scrollbar {
     width: 12px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #root::-webkit-scrollbar-track {
@@ -121,7 +121,7 @@ body {
     cursor: pointer;
 }
 
-.todoBtn div{
+.todoBtn div {
     font-size: 34px;
     line-height: 34px;
     color: rgb(255, 255, 255);
@@ -157,11 +157,17 @@ body {
     animation-duration: .1s;
 }
 
-.large {
-    overflow-y: scroll;
+.nonescrol::-webkit-scrollbar {
+    display: none;
+}
+
+.nonescrol {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .large::-webkit-scrollbar {
+    display: block;
     width: 12px;
 }
 
@@ -188,6 +194,7 @@ body {
     word-wrap: break-word;
     outline: none;
     cursor: pointer;
+    overflow-y: scroll;
 }
 
 .delete:hover {

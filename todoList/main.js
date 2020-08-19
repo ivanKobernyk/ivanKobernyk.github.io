@@ -45,6 +45,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     /* let message; */
 
 
+
+
     function blurinput() {
         input.addEventListener("blur", () => {
             value = input.value;
@@ -59,15 +61,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
     listiner();
     addsavelistiner();
 
+
+    setoverflow();
     function setoverflow() {
         todo = document.querySelectorAll('.todo');
         todo.forEach(el => {
-            if (el.offsetHeight > 399) {
+            if (el.offsetHeight < 338) {
+                console.log('ol');
+                el.classList.remove('large');
+                el.classList.add('nonescrol');
+            }
+            if (el.offsetHeight > 338) {
+                el.classList.remove('nonescrol');
                 el.classList.add('large');
             }
         });
     }
-    setoverflow();
+
 
     function addelement() {
         let obj = {
@@ -127,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                  <span class="saved"></span>
                      <span class='delete' key=${key}>&#10006;</span>
             </div>
-        <span class="todo" contenteditable="true">${el.value}</span>
+        <span class="todo" contenteditable="true" onchange="setoverflow()">${el.value}</span>
         </div>`;
             key++;
             return str;
@@ -224,12 +234,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let saved = el.parentNode.querySelector('.saved');
         if (arr[el.parentNode.id].value == el.innerHTML) return null;
         arr[el.parentNode.id].value = el.innerHTML;
+        setoverflow();
         push();
 
         saved.innerHTML = 'Saved)';
+
         el.blur();
         setTimeout(() => { saved.innerHTML = '' }, 2000);
     }
+
+
 
     function addsavelistiner() {
         todo = document.querySelectorAll('.todo');
