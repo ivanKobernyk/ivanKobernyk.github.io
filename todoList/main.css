@@ -1,5 +1,5 @@
 .animate__faste {
-    --animate-duration: 0.15s;
+    --animate-duration: 0.1s;
 }
 
 
@@ -52,7 +52,7 @@ body {
 .todoInputContainer {
     font-family: Roboto, sans-serif;
     box-sizing: border-box;
-    padding: 0px;
+    padding: 20px 0;
     display: flex;
     align-items: center;
     width: 600px;
@@ -73,7 +73,7 @@ body {
     color: white;
     background-color: rgb(59, 59, 59);
     overflow-y: scroll;
-    padding: 20px 20px;
+    padding: 0 20px;
     border-width: initial;
     border-style: none;
     border-color: initial;

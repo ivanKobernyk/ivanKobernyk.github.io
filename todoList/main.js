@@ -75,14 +75,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
             time: `${clock.render()}`
         }
 
-        if (obj.value == '' || obj.value == '\n' || obj.value == null) {
+
+
+
+        if (obj.value == '' || obj.value == '\n' || obj.value == null || isOkey() == false) {
             alert.innerHTML = "Enter something, please!";
             input.blur();
             input.value = null;
             setTimeout(() => { alert.innerHTML = '' }, 2000);
             return 0;
         }
-        if (obj.value != '' && obj.value != '\n') {
+        if (obj.value != '' && obj.value != '\n' && isOkey()) {
             arr.push(obj);
             push();
         }
@@ -135,7 +138,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
     };
 
 
+    function isOkey() {
+        let boolean = true;
+        let secbool = false;
+        if (input.value.length < 3) {
+            console.log(input.value.length)
+            boolean = false;
+        } else if (true) {
+            let set = new Set(input.value);
+            set.forEach((el) => {
 
+                if (el == " " || el == '\n') {
+                    boolean = false;
+                } else if (el !== ' ' || el !== '\n') {
+                    secbool = true;
+                }
+            });
+        }
+        return secbool || boolean;
+    }
 
 
 
